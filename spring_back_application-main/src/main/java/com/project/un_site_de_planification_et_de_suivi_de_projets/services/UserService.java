@@ -39,7 +39,7 @@ public class UserService implements UserDetailsService {
         return UserRepo.save(employee);
     }
 
-    public User findUserById(Long id) {
+    public static User findUserById(Long id) {
         return UserRepo.findById(id)
                 .orElseThrow(() -> new UserNotFoundException("User by id " + id + " was not found"));
     }
@@ -61,5 +61,15 @@ public class UserService implements UserDetailsService {
 
         return UserDetailsImpl.build(user);
     }
+
+    // Ajouter un utilisateur par ID
+    public void addUserById(Long userId) {
+        User user = findUserById(userId); // Recherchez l'utilisateur par ID
+        if (user != null) {
+        } else {
+            throw new UserNotFoundException("Utilisateur non trouvé avec l'ID " + userId);
+        }
+    }
+
 
 }

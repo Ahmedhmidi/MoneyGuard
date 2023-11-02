@@ -38,4 +38,15 @@ public class DispenseService {
     public void deleteDispense(Long id){
         dispenseRepository.deleteById(id);
     }
+
+    // Ajouter un utilisateur par ID
+    public void addUserById(Long userId) {
+        User user = UserService.findUserById(userId); // Recherchez l'utilisateur par ID
+        if (user != null) {
+
+        } else {
+            throw new UserNotFoundException("Utilisateur non trouvé avec l'ID " + userId);
+        }
+    }
+
 }
